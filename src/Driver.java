@@ -26,7 +26,7 @@ public class Driver {
                 count++;
                 System.out.println("");
                 System.out.print(b);
-                System.out.print("Enter you move (1-9): ");
+                System.out.print("Enter your move (1-9): ");
                 int move = in.nextInt();
                 b.placePiece(Integer.toString(move), player);
                 if (b.isWinner(player)) {
@@ -35,6 +35,40 @@ public class Driver {
                     System.out.println("PLAYER " + player + " WINS");
                 }
             }
+        }
+
+        if (gameMode == 2){
+            TTTBoard b = new TTTBoard();
+            TTTPlayerBasicAI p = new TTTPlayerBasicAI("X");
+            int count = 0;
+            while(!b.isWinner("X") && !b.isWinner("O") && count < 9){
+                System.out.println("");
+                System.out.println(b);
+                System.out.print("Enter your move (1-9): ");
+                int move = in.nextInt();
+                b.placePiece(Integer.toString(move), "O");
+                count++;
+                if(count < 9){
+                    System.out.println("");
+                    System.out.println(b);
+                    b.placePiece(p.getMove(b), "X");
+                    System.out.println("Computer moved");
+                    count++;
+                    if (b.isWinner("X")) {
+                        System.out.println("");
+                        System.out.print(b);
+                        System.out.println("PLAYER X WINS");
+                    }
+                }
+                if(b.isWinner("O")){
+                    System.out.println("");
+                    System.out.println(b);
+                    System.out.println("PLAYER O WINS");
+                }
+            }
+
+
+
         }
     }
 }
