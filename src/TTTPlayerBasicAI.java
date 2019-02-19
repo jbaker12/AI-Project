@@ -95,6 +95,7 @@ public class TTTPlayerBasicAI extends Player {
             }
 
         }
+        System.out.println("Computer Moved");
         return "1";
     }
 }

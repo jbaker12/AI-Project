@@ -12,13 +12,13 @@ public class Driver2 {
                 "\nSelect your game (1-6): ");
         int gameMode = in.nextInt();
         Player p1 = new HumanTTT("X");
+        Player p2 = new HumanTTT("O");
         boolean done = false;
         int count = 0;
         Board b = new TTTBoard();
 
         if(gameMode <= 3) {
             b = new TTTBoard();
-            Player p2 = new HumanTTT("O");
             if (gameMode == 1) {
                 p1 = new HumanTTT("X");
             } else if (gameMode == 2) {
@@ -27,13 +27,19 @@ public class Driver2 {
                 p1 = new TTTPlayerProAI("X");
             }
         }
+        Player player = p1;
         while(!done) {
             System.out.println(b);
-            p1.getMove(b);
+            //player = p1;
+            //player.getMove(b);
             count++;
-            b.placePiece(p1.getMove(b), "X");
+            if(player == p1)
+                b.placePiece(player.getMove(b), "X");
+            if(player == p2)
+                b.placePiece(player.getMove(b), "O");
 
             if(count == 9 || b.isWinner("X") || b.isWinner("O")){
+                System.out.println(b);
                 if(b.isWinner("X"))
                     System.out.println("Player X Wins!");
                 else if(b.isWinner("O"))
@@ -42,6 +48,13 @@ public class Driver2 {
                     System.out.println("Cats Game");
                 done = true;
             }
+            if(player == p1){
+                player = p2;
+            }
+            else if(player == p2){
+                player = p1;
+            }
+
         }
 
 
