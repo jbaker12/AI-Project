@@ -30,15 +30,17 @@ public class TTTPlayerProAI extends Player {
     private MoveInfo recMove(TTTBoard board, String playerTurn, String moveLoc) {
         MoveInfo max = new MoveInfo(moveLoc, -10);
         MoveInfo min = new MoveInfo(moveLoc, 10);
+        ArrayList<String> a = board.getEmptyLocs();
 
-        if (board.isWinner("X"))
+        if (board.isWinner("X")) {
             return new MoveInfo(moveLoc, 10);
+        }
         else if (board.isWinner("O"))
             return new MoveInfo(moveLoc, -10);
-        else if (!board.isWinner("X") && !board.isWinner("O"))
+        else if (a.size() == 0)
             return new MoveInfo(moveLoc, 0);
 
-        ArrayList<String> a = board.getEmptyLocs();
+
 
         for (String x : a) {
             moveLoc = x;

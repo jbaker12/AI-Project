@@ -33,10 +33,12 @@ public class Driver2 {
             //player = p1;
             //player.getMove(b);
             count++;
-            if(player == p1)
+            if(player == p1) {
                 b.placePiece(player.getMove(b), "X");
-            if(player == p2)
+            }
+            if(player == p2) {
                 b.placePiece(player.getMove(b), "O");
+            }
 
             if(count == 9 || b.isWinner("X") || b.isWinner("O")){
                 System.out.println(b);
