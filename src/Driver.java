@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Driver2 {
+public class Driver {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("1. Tic-Tac-Toe (Human vs Human)" +
@@ -29,16 +29,14 @@ public class Driver2 {
                 p1 = new TTTPlayerProAI("X");
             }
         }
-
         else{
             c = 42;
             b = new C4Board();
             p2 = new HumanC4("Y");
             if(gameMode == 4)
                 p1 = new HumanC4("R");
-            //else if(gameMode == 5)
-                //p1 = new C4BasicAI("R");
-
+            else if(gameMode == 5)
+                p1 = new C4BasicAI("R");
         }
         Player player = p1;
         while(!done) {
@@ -50,7 +48,6 @@ public class Driver2 {
             if(player == p2) {
                 b.placePiece(player.getMove(b), player.name);
             }
-
             if(count == c || b.isWinner(player.name) || b.isWinner(player.name)){
                 System.out.println(b);
                 if(b.isWinner(player.name))
@@ -59,7 +56,6 @@ public class Driver2 {
                     System.out.println("Cats Game");
                 done = true;
             }
-
             if(player == p1)
                 player = p2;
             else

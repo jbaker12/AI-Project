@@ -14,7 +14,6 @@ public class C4Board extends Board {
      */
     public C4Board() {
         super(ROWS, COLS);
-
         int count = 1;
         for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
@@ -26,12 +25,13 @@ public class C4Board extends Board {
 
     /**
      * Places a player piece on the board at the given location.
-     * @param loc the location to place the piece
+     *
+     * @param loc    the location to place the piece
      * @param player the player making the move
      */
     public void placePiece(String loc, String player) {
-        for (int r = ROWS -1; r >= 0; r--) {
-            if(theBoard[r][Integer.parseInt(loc) - 1].equals("-")) {
+        for (int r = ROWS - 1; r >= 0; r--) {
+            if (theBoard[r][Integer.parseInt(loc) - 1].equals("-")) {
                 theBoard[r][Integer.parseInt(loc) - 1] = player;
                 r = 0;
             }
@@ -40,17 +40,15 @@ public class C4Board extends Board {
 
     /**
      * Retracts the piece at the given location.
+     *
      * @param loc the location to reset
      */
     public void retractPiece(String loc) {
         int currentLoc = 1;
-
-        for (int r = 0; r < ROWS; r++) {
-            for (int c = 0; c < COLS; c++) {
-                if (String.valueOf(currentLoc).equals(loc))
-                    theBoard[r][c] = loc;
-
-                currentLoc++;
+        for (int r = 0; r < 7; r++){
+            if(!theBoard[r][Integer.parseInt(loc) -1].equals("-")){
+                theBoard[r][Integer.parseInt(loc) - 1] = "-";
+                r = 7;
             }
         }
     }
@@ -59,26 +57,15 @@ public class C4Board extends Board {
      * Returns the empty locations on the
      */
     public ArrayList<String> getEmptyLocs() {
-        /*ArrayList<String> empty = new ArrayList<>();
-
-        for(int r = 0; r < theBoard.length; r++) {
-            for(int c = 0; c < theBoard[0].length; c++) {
-                if(!theBoard[r][c].equals("R") && !theBoard[r][c].equals("Y"))
-                    empty.add((String) theBoard[r][c]);
-            }
-        }
-
-        return empty;
-        */
         ArrayList<String> empty = new ArrayList<>();
         int c = 0;
-        for(int i = 0; i < COLS; i++){
-            for(int r = 0; r < ROWS; r++){
-                if(get(r, i).equals("-")){
+        for (int i = 0; i < COLS; i++) {
+            for (int r = 0; r < ROWS; r++) {
+                if (get(r, i).equals("-")) {
                     c++;
                 }
             }
-            if(c > 0){
+            if (c > 0) {
                 empty.add(Integer.toString(i + 1));
             }
             c = 0;
@@ -91,26 +78,26 @@ public class C4Board extends Board {
      * current state, false otherwise
      * @param player the player to check for a win
      */
-    public boolean isWinner(String player) {
+    public boolean isWinner (String player){
 
         // check rows for streak
-        for(int i = 0; i < getRows(); i++) {
+        for (int i = 0; i < getRows(); i++) {
             if (streakInRow(i, player, 4) || streakInCol(i, player, 4))
                 return true;
         }
         //Check final column
-        if(streakInCol(6, player, 4))
+        if (streakInCol(6, player, 4))
             return true;
         //Check diagonals
-        for (int r = 3; r < 6; r++){
-            for(int c = 0; c <= 3; c++){
-                if(streakInNorthEastDiag(r, c, player, 4))
+        for (int r = 3; r < 6; r++) {
+            for (int c = 0; c <= 3; c++) {
+                if (streakInNorthEastDiag(r, c, player, 4))
                     return true;
             }
         }
-        for (int r = 0; r < 3; r++){
-            for(int c = 0; c <= 3; c++){
-                if(streakInSouthEastDiag(r, c, player, 4))
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c <= 3; c++) {
+                if (streakInSouthEastDiag(r, c, player, 4))
                     return true;
             }
         }
@@ -122,19 +109,19 @@ public class C4Board extends Board {
      * Returns true if the game is over, false otherwise
      * @return true if the game is over, false otherwise
      */
-    public boolean isGameOver() {
-        if(isWinner("R") || !isWinner("Y") || getEmptyLocs().size() == 0)
+    public boolean isGameOver(){
+        if (isWinner("R") || !isWinner("Y") || getEmptyLocs().size() == 0)
             return true;
         else
             return false;
 
     }
 
-    public String toString(){
-        String toReturn = "1234567\n";
+    public String toString () {
+        String toReturn = "\n1234567\n";
 
-        for(int r = 0; r < theBoard.length; r++) {
-            for(int c = 0; c < theBoard[0].length; c++) {
+        for (int r = 0; r < theBoard.length; r++) {
+            for (int c = 0; c < theBoard[0].length; c++) {
                 toReturn += theBoard[r][c];
             }
 
@@ -145,3 +132,4 @@ public class C4Board extends Board {
     }
 
 }
+

@@ -17,6 +17,7 @@ public class TTTPlayerProAI extends Player {
      */
     public String getMove(Board board) {
         MoveInfo mi = recMove( (TTTBoard) board, this.name, "");
+        System.out.println("Computer Moved To: " + mi.getLoc());
         return mi.getLoc();
     }
 

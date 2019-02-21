@@ -34,6 +34,7 @@ public class TTTPlayerBasicAI extends Player {
         }
         Random r = new Random();
         int num = r.nextInt(b.size());
+        System.out.println("Computer Moved To: " + num);
         return b.get(num);
     }
 }
