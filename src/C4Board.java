@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class C4Board extends Board {
     // Constants
-    public static final int ROWS = 4;
-    public static final int COLS = 4;
+    public static final int ROWS = 6;
+    public static final int COLS = 7;
 
     /**
      * Constructs a 3x3 board for Tic Tac Toe and initializes
@@ -63,7 +63,7 @@ public class C4Board extends Board {
 
         for(int r = 0; r < theBoard.length; r++) {
             for(int c = 0; c < theBoard[0].length; c++) {
-                if(!theBoard[r][c].equals("X") && !theBoard[r][c].equals("O"))
+                if(!theBoard[r][c].equals("R") && !theBoard[r][c].equals("Y"))
                     empty.add((String) theBoard[r][c]);
             }
         }
@@ -95,7 +95,7 @@ public class C4Board extends Board {
      * @return true if the game is over, false otherwise
      */
     public boolean isGameOver() {
-        if(isWinner("X") || !isWinner("O") || getEmptyLocs().size() == 0)
+        if(isWinner("R") || !isWinner("Y") || getEmptyLocs().size() == 0)
             return true;
         else
             return false;
