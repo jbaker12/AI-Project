@@ -32,8 +32,8 @@ public class Driver2 {
             p2 = new HumanC4("Y");
             if(gameMode == 4)
                 p1 = new HumanC4("R");
-            else if(gameMode == 5)
-                p1 = new C4BasicAI("R");
+            //else if(gameMode == 5)
+                //p1 = new C4BasicAI("R");
 
         }
 

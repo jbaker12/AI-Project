@@ -18,7 +18,7 @@ public class C4Board extends Board {
         int count = 1;
         for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
-                set(r, c, "" + count);
+                set(r, c, "-");
                 count++;
             }
         }
@@ -59,7 +59,7 @@ public class C4Board extends Board {
      * Returns the empty locations on the
      */
     public ArrayList<String> getEmptyLocs() {
-        ArrayList<String> empty = new ArrayList<>();
+        /*ArrayList<String> empty = new ArrayList<>();
 
         for(int r = 0; r < theBoard.length; r++) {
             for(int c = 0; c < theBoard[0].length; c++) {
@@ -68,6 +68,21 @@ public class C4Board extends Board {
             }
         }
 
+        return empty;
+        */
+        ArrayList<String> empty = new ArrayList<>();
+        int c = 0;
+        for(int i = 0; i < COLS; i++){
+            for(int r = 0; r < ROWS; r++){
+                if(get(r, i).equals("-")){
+                    c++;
+                }
+            }
+            if(c > 0){
+                empty.add(Integer.toString(i + 1));
+            }
+            c = 0;
+        }
         return empty;
     }
 
@@ -83,16 +98,23 @@ public class C4Board extends Board {
             if (streakInRow(i, player, 4) || streakInCol(i, player, 4))
                 return true;
         }
-
+        //Check final column
+        if(streakInCol(6, player, 4))
+            return true;
+        //Check diagonals
         for (int r = 3; r < 6; r++){
             for(int c = 0; c <= 3; c++){
                 if(streakInNorthEastDiag(r, c, player, 4))
                     return true;
-                if(streakInSouthEastDiag(c, r, player, 4))
+            }
+        }
+        for (int r = 0; r < 3; r++){
+            for(int c = 0; c <= 3; c++){
+                if(streakInSouthEastDiag(r, c, player, 4))
                     return true;
             }
-
         }
+
         return false;
     }
 
