@@ -31,8 +31,10 @@ public class C4Board extends Board {
      */
     public void placePiece(String loc, String player) {
         for (int r = ROWS -1; r >= 0; r--) {
-            if(!theBoard[r][Integer.parseInt(loc)].equals("-"))
-                theBoard[r][Integer.parseInt(loc)] = player;
+            if(theBoard[r][Integer.parseInt(loc) - 1].equals("-")) {
+                theBoard[r][Integer.parseInt(loc) - 1] = player;
+                r = 0;
+            }
         }
     }
 

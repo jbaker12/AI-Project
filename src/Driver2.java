@@ -16,8 +16,10 @@ public class Driver2 {
         boolean done = false;
         int count = 0;
         Board b = new TTTBoard();
+        int c = 0;
 
         if(gameMode <= 3) {
+            c = 9;
             b = new TTTBoard();
             if (gameMode == 1) {
                 p1 = new HumanTTT("X");
@@ -29,6 +31,7 @@ public class Driver2 {
         }
 
         else{
+            c = 42;
             b = new C4Board();
             p2 = new HumanC4("Y");
             if(gameMode == 4)
@@ -40,22 +43,18 @@ public class Driver2 {
         Player player = p1;
         while(!done) {
             System.out.println(b);
-            //player = p1;
-            //player.getMove(b);
             count++;
             if(player == p1) {
-                b.placePiece(player.getMove(b), "X");
+                b.placePiece(player.getMove(b), player.name);
             }
             if(player == p2) {
-                b.placePiece(player.getMove(b), "O");
+                b.placePiece(player.getMove(b), player.name);
             }
 
-            if(count == 9 || b.isWinner("X") || b.isWinner("O")){
+            if(count == c || b.isWinner(player.name) || b.isWinner(player.name)){
                 System.out.println(b);
-                if(b.isWinner("X"))
-                    System.out.println("Player X Wins!");
-                else if(b.isWinner("O"))
-                    System.out.println("Player O Wins!");
+                if(b.isWinner(player.name))
+                    System.out.println("Player " + player.name + " Wins!");
                 else
                     System.out.println("Cats Game");
                 done = true;
@@ -63,8 +62,7 @@ public class Driver2 {
 
             if(player == p1)
                 player = p2;
-
-            else if(player == p2)
+            else
                 player = p1;
         }
     }
