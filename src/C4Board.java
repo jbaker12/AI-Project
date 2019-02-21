@@ -84,7 +84,6 @@ public class C4Board extends Board {
                 return true;
         }
 
-        //north east streak
         for (int r = 3; r < 6; r++){
             for(int c = 0; c <= 3; c++){
                 if(streakInNorthEastDiag(r, c, player, 4))
