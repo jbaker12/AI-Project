@@ -27,6 +27,7 @@ public class Driver2 {
                 p1 = new TTTPlayerProAI("X");
             }
         }
+
         Player player = p1;
         while(!done) {
             System.out.println(b);
@@ -50,16 +51,12 @@ public class Driver2 {
                     System.out.println("Cats Game");
                 done = true;
             }
-            if(player == p1){
+
+            if(player == p1)
                 player = p2;
-            }
-            else if(player == p2){
+
+            else if(player == p2)
                 player = p1;
-            }
-
         }
-
-
-
     }
 }
