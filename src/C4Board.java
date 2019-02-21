@@ -108,4 +108,18 @@ public class C4Board extends Board {
 
     }
 
+    public String toString(){
+        String toReturn = "1234567\n";
+
+        for(int r = 0; r < theBoard.length; r++) {
+            for(int c = 0; c < theBoard[0].length; c++) {
+                toReturn += theBoard[r][c];
+            }
+
+            toReturn += "\n";
+        }
+
+        return toReturn;
+    }
+
 }

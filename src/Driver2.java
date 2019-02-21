@@ -27,6 +27,15 @@ public class Driver2 {
                 p1 = new TTTPlayerProAI("X");
             }
         }
+        else{
+            b = new C4Board();
+            p2 = new HumanC4("Y");
+            if(gameMode == 4)
+                p1 = new HumanC4("R");
+            else if(gameMode == 5)
+                p1 = new C4BasicAI("R");
+
+        }
 
         Player player = p1;
         while(!done) {
