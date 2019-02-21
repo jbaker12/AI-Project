@@ -80,11 +80,13 @@ public class C4Board extends Board {
 
         // check rows for streak
         for(int i = 0; i < getRows(); i++) {
-            if (streakInRow(i, player, 3) || streakInCol(i, player, 3))
+            if (streakInRow(i, player, 4) || streakInCol(i, player, 4))
                 return true;
         }
 
-        if(streakInNorthEastDiag(2, 0, player, 3) || streakInSouthEastDiag(0, 0, player, 3))
+
+
+        if(streakInNorthEastDiag(2, 0, player, 4) || streakInSouthEastDiag(0, 0, player, 4))
             return true;
 
         return false;
