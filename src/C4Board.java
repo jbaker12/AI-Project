@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class C4Board extends Board {
     // Constants
-    public static final int ROWS = 3;
-    public static final int COLS = 3;
+    public static final int ROWS = 4;
+    public static final int COLS = 4;
 
     /**
      * Constructs a 3x3 board for Tic Tac Toe and initializes
