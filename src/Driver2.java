@@ -27,6 +27,7 @@ public class Driver2 {
                 p1 = new TTTPlayerProAI("X");
             }
         }
+
         else{
             b = new C4Board();
             p2 = new HumanC4("Y");
@@ -36,7 +37,6 @@ public class Driver2 {
                 //p1 = new C4BasicAI("R");
 
         }
-
         Player player = p1;
         while(!done) {
             System.out.println(b);
